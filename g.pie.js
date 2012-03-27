@@ -235,6 +235,12 @@
             legend(opts.legend, opts.legendothers, opts.legendmark, opts.legendpos);
         }
 
+        if (opts.domhooks) {
+            for (var idx = 0; idx < len; idx++) {
+                covers[idx].domhook = opts.domhooks[idx];
+            }
+        }
+
         chart.push(series, covers);
         chart.series = series;
         chart.covers = covers;
