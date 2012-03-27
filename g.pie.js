@@ -127,7 +127,8 @@
                         r: r,
                         value: values[j],
                         total: total,
-                        label: that.labels && that.labels[j]
+                        label: that.labels && that.labels[j],
+                        data: that.data[j]
                     };
                     cover.mouseover(function () {
                         fin.call(o);
@@ -159,7 +160,8 @@
                         r: r,
                         value: values[j],
                         total: total,
-                        label: that.labels && that.labels[j]
+                        label: that.labels && that.labels[j],
+                        data: that.data[j]
                     };
                     f.call(o);
                 })(series[i], covers[i], i);
@@ -183,7 +185,8 @@
                         r: r,
                         value: values[j],
                         total: total,
-                        label: that.labels && that.labels[j]
+                        label: that.labels && that.labels[j],
+                        data: that.data[j]
                     };
                     cover.click(function () { f.call(o); });
                 })(series[i], covers[i], i);
@@ -231,14 +234,20 @@
             chart.push(chart.labels);
         };
 
+        var setData = function(data) {
+            data = data || [];
+            for (var idx = 0; idx < len; idx++) {
+                opts.data[idx] && (data[idx] = opts.data[idx]);
+            }
+            chart.data = data;
+        }
+
         if (opts.legend) {
             legend(opts.legend, opts.legendothers, opts.legendmark, opts.legendpos);
         }
 
-        if (opts.domhooks) {
-            for (var idx = 0; idx < len; idx++) {
-                covers[idx].domhook = opts.domhooks[idx];
-            }
+        if (opts.data) {
+            setData(opts.data);
         }
 
         chart.push(series, covers);
