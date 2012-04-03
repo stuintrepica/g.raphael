@@ -98,10 +98,10 @@
         var allx = Array.prototype.concat.apply([], valuesx),
             ally = Array.prototype.concat.apply([], valuesy),
             xdim = chartinst.snapEnds(Math.min.apply(Math, allx), Math.max.apply(Math, allx), valuesx[0].length - 1),
-            minx = Math.min.apply(Math, allx),// xdim.from,
+            minx = Math.min.apply(Math, allx),
             maxx = xdim.to,
             ydim = chartinst.snapEnds(Math.min.apply(Math, ally), Math.max.apply(Math, ally), valuesy[0].length - 1),
-            miny = 0, //ydim.from,
+            miny = 0,
             maxy = ydim.to,
             kx = (width - gutter * 2) / ((maxx - minx) || 1),
             ky = (height - gutter * 2) / ((maxy - miny) || 1);
